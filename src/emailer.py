@@ -60,6 +60,17 @@ def render_digest(papers: Iterable[Paper], template_dir: Path) -> tuple[str, str
     return "\n".join(lines).strip(), html
 
 
+def smtp_login(server: smtplib.SMTP, username: str, password: str) -> None:
+    server.ehlo_or_helo_if_needed()
+    advertised = server.esmtp_features.get("auth", "").split()
+    if "LOGIN" not in advertised:
+        server.login(username, password)
+        return
+    server.user = username
+    server.password = password
+    server.auth("LOGIN", server.auth_login, initial_response_ok=False)
+
+
 def send_digest(papers: Iterable[Paper], template_dir: Path) -> None:
     paper_list = list(papers)
     if not paper_list:
@@ -82,12 +93,12 @@ def send_digest(papers: Iterable[Paper], template_dir: Path) -> None:
     context = ssl.create_default_context()
     if use_ssl:
         with smtplib.SMTP_SSL(host, port, timeout=timeout, context=context) as server:
-            server.login(username, password)
+            smtp_login(server, username, password)
             server.send_message(message)
         return
     with smtplib.SMTP(host, port, timeout=timeout) as server:
         server.ehlo()
         server.starttls(context=context)
         server.ehlo()
-        server.login(username, password)
+        smtp_login(server, username, password)
         server.send_message(message)
