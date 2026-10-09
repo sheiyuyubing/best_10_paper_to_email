@@ -1,0 +1,14 @@
+[Unit]
+Description=Email a digest of recent computer science top-venue papers
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=__PROJECT_ROOT__
+ExecStart=/bin/bash __PROJECT_ROOT__/scripts/run_paper_digest.sh
+TimeoutStartSec=1800
+Nice=10
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true

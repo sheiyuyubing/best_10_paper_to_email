@@ -1,0 +1,110 @@
+defaults:
+  interval_days: 10
+  lookback_days: 180
+  target_count: 10
+  request_timeout_seconds: 30
+  max_retries: 3
+  max_pages_per_source: 5
+  polite_delay_seconds: 1.0
+  arxiv_delay_seconds: 3.0
+  proceedings_delay_seconds: 5.0
+  max_candidates: 5000
+
+sources:
+  openalex:
+    enabled: true
+    per_page: 200
+  crossref:
+    enabled: true
+    rows: 200
+  dblp:
+    enabled: true
+    per_page: 1000
+    max_conference_queries: 25
+  arxiv:
+    enabled: true
+    max_results: 500
+  proceedings: []
+
+venues:
+  - {name: Journal of the ACM, abbr: JACM, type: journal, category: theory, tier: 1, aliases: ['J. ACM']}
+  - {name: SIAM Journal on Computing, abbr: SICOMP, type: journal, category: theory, tier: 1, aliases: []}
+  - {name: ACM Transactions on Computer Systems, abbr: TOCS, type: journal, category: systems, tier: 1, aliases: []}
+  - {name: ACM Transactions on Storage, abbr: TOS, type: journal, category: systems, tier: 1, aliases: []}
+  - {name: ACM Transactions on Programming Languages and Systems, abbr: TOPLAS, type: journal, category: programming_languages, tier: 1, aliases: []}
+  - {name: Journal of Machine Learning Research, abbr: JMLR, type: journal, category: ai, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Pattern Analysis and Machine Intelligence, abbr: TPAMI, type: journal, category: ai, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Neural Networks and Learning Systems, abbr: TNNLS, type: journal, category: ai, tier: 1, aliases: []}
+  - {name: Artificial Intelligence, abbr: AIJ, type: journal, category: ai, tier: 1, aliases: []}
+  - {name: International Journal of Computer Vision, abbr: IJCV, type: journal, category: computer_vision, tier: 1, aliases: []}
+  - {name: ACM Transactions on Graphics, abbr: TOG, type: journal, category: graphics, tier: 1, aliases: []}
+  - {name: ACM Transactions on Database Systems, abbr: TODS, type: journal, category: database, tier: 1, aliases: []}
+  - {name: The VLDB Journal, abbr: VLDBJ, type: journal, category: database, tier: 1, aliases: [VLDB Journal]}
+  - {name: IEEE Transactions on Knowledge and Data Engineering, abbr: TKDE, type: journal, category: data_mining, tier: 1, aliases: []}
+  - {name: ACM Transactions on Information Systems, abbr: TOIS, type: journal, category: information_systems, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Software Engineering, abbr: TSE, type: journal, category: software_engineering, tier: 1, aliases: []}
+  - {name: ACM Transactions on Software Engineering and Methodology, abbr: TOSEM, type: journal, category: software_engineering, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Information Forensics and Security, abbr: TIFS, type: journal, category: security, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Dependable and Secure Computing, abbr: TDSC, type: journal, category: security, tier: 1, aliases: []}
+  - {name: IEEE/ACM Transactions on Networking, abbr: TON, type: journal, category: networking, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Mobile Computing, abbr: TMC, type: journal, category: networking, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Parallel and Distributed Systems, abbr: TPDS, type: journal, category: distributed_systems, tier: 1, aliases: []}
+  - {name: IEEE Transactions on Computers, abbr: TC, type: journal, category: computer_architecture, tier: 1, aliases: []}
+  - {name: ACM Transactions on Computer-Human Interaction, abbr: TOCHI, type: journal, category: hci, tier: 1, aliases: []}
+
+  - {name: Neural Information Processing Systems, abbr: NeurIPS, type: conference, category: ai, tier: 1, aliases: [NIPS, Advances in Neural Information Processing Systems]}
+  - {name: International Conference on Machine Learning, abbr: ICML, type: conference, category: ai, tier: 1, aliases: []}
+  - {name: International Conference on Learning Representations, abbr: ICLR, type: conference, category: ai, tier: 1, aliases: []}
+  - {name: AAAI Conference on Artificial Intelligence, abbr: AAAI, type: conference, category: ai, tier: 1, aliases: []}
+  - {name: International Joint Conference on Artificial Intelligence, abbr: IJCAI, type: conference, category: ai, tier: 1, aliases: []}
+  - {name: IEEE Conference on Computer Vision and Pattern Recognition, abbr: CVPR, type: conference, category: computer_vision, tier: 1, aliases: []}
+  - {name: International Conference on Computer Vision, abbr: ICCV, type: conference, category: computer_vision, tier: 1, aliases: []}
+  - {name: European Conference on Computer Vision, abbr: ECCV, type: conference, category: computer_vision, tier: 1, aliases: []}
+  - {name: Annual Meeting of the Association for Computational Linguistics, abbr: ACL, type: conference, category: nlp, tier: 1, aliases: []}
+  - {name: Conference on Empirical Methods in Natural Language Processing, abbr: EMNLP, type: conference, category: nlp, tier: 1, aliases: []}
+  - {name: North American Chapter of the Association for Computational Linguistics, abbr: NAACL, type: conference, category: nlp, tier: 1, aliases: []}
+  - {name: ACM Symposium on Operating Systems Principles, abbr: SOSP, type: conference, category: systems, tier: 1, aliases: []}
+  - {name: USENIX Symposium on Operating Systems Design and Implementation, abbr: OSDI, type: conference, category: systems, tier: 1, aliases: []}
+  - {name: USENIX Annual Technical Conference, abbr: ATC, type: conference, category: systems, tier: 1, aliases: [USENIX ATC]}
+  - {name: European Conference on Computer Systems, abbr: EuroSys, type: conference, category: systems, tier: 1, aliases: []}
+  - {name: International Conference on Architectural Support for Programming Languages and Operating Systems, abbr: ASPLOS, type: conference, category: systems, tier: 1, aliases: []}
+  - {name: ACM SIGCOMM Conference, abbr: SIGCOMM, type: conference, category: networking, tier: 1, aliases: []}
+  - {name: USENIX Symposium on Networked Systems Design and Implementation, abbr: NSDI, type: conference, category: networking, tier: 1, aliases: []}
+  - {name: ACM International Conference on Mobile Computing and Networking, abbr: MobiCom, type: conference, category: mobile_computing, tier: 1, aliases: []}
+  - {name: IEEE International Conference on Computer Communications, abbr: INFOCOM, type: conference, category: networking, tier: 1, aliases: []}
+  - {name: ACM Conference on Computer and Communications Security, abbr: CCS, type: conference, category: security, tier: 1, aliases: [ACM CCS]}
+  - {name: IEEE Symposium on Security and Privacy, abbr: S&P, type: conference, category: security, tier: 1, aliases: [IEEE S&P, Oakland]}
+  - {name: USENIX Security Symposium, abbr: USENIX Security, type: conference, category: security, tier: 1, aliases: [USENIX Security]}
+  - {name: Network and Distributed System Security Symposium, abbr: NDSS, type: conference, category: security, tier: 1, aliases: []}
+  - {name: ACM SIGMOD International Conference on Management of Data, abbr: SIGMOD, type: conference, category: database, tier: 1, aliases: []}
+  - {name: International Conference on Very Large Data Bases, abbr: VLDB, type: conference, category: database, tier: 1, aliases: [PVLDB]}
+  - {name: IEEE International Conference on Data Engineering, abbr: ICDE, type: conference, category: database, tier: 1, aliases: []}
+  - {name: ACM SIGKDD Conference on Knowledge Discovery and Data Mining, abbr: KDD, type: conference, category: data_mining, tier: 1, aliases: [SIGKDD]}
+  - {name: The Web Conference, abbr: WWW, type: conference, category: web, tier: 1, aliases: [International World Wide Web Conference]}
+  - {name: ACM International Conference on Web Search and Data Mining, abbr: WSDM, type: conference, category: web, tier: 2, aliases: []}
+  - {name: ACM International Conference on Information and Knowledge Management, abbr: CIKM, type: conference, category: information_systems, tier: 2, aliases: []}
+  - {name: ACM Conference on Recommender Systems, abbr: RecSys, type: conference, category: recommender_systems, tier: 2, aliases: []}
+  - {name: International Conference on Software Engineering, abbr: ICSE, type: conference, category: software_engineering, tier: 1, aliases: []}
+  - {name: ACM International Conference on the Foundations of Software Engineering, abbr: FSE, type: conference, category: software_engineering, tier: 1, aliases: [ESEC/FSE]}
+  - {name: International Conference on Automated Software Engineering, abbr: ASE, type: conference, category: software_engineering, tier: 1, aliases: []}
+  - {name: International Symposium on Software Testing and Analysis, abbr: ISSTA, type: conference, category: software_engineering, tier: 1, aliases: []}
+  - {name: ACM SIGPLAN Conference on Programming Language Design and Implementation, abbr: PLDI, type: conference, category: programming_languages, tier: 1, aliases: []}
+  - {name: ACM SIGPLAN Symposium on Principles of Programming Languages, abbr: POPL, type: conference, category: programming_languages, tier: 1, aliases: []}
+  - {name: ACM SIGPLAN International Conference on Object-Oriented Programming Systems Languages and Applications, abbr: OOPSLA, type: conference, category: programming_languages, tier: 1, aliases: []}
+  - {name: ACM Symposium on Theory of Computing, abbr: STOC, type: conference, category: theory, tier: 1, aliases: []}
+  - {name: IEEE Symposium on Foundations of Computer Science, abbr: FOCS, type: conference, category: theory, tier: 1, aliases: []}
+  - {name: ACM-SIAM Symposium on Discrete Algorithms, abbr: SODA, type: conference, category: theory, tier: 2, aliases: []}
+  - {name: ACM SIGGRAPH, abbr: SIGGRAPH, type: conference, category: graphics, tier: 1, aliases: []}
+  - {name: SIGGRAPH Asia, abbr: SIGGRAPH Asia, type: conference, category: graphics, tier: 1, aliases: []}
+  - {name: ACM CHI Conference on Human Factors in Computing Systems, abbr: CHI, type: conference, category: hci, tier: 1, aliases: []}
+  - {name: ACM Symposium on User Interface Software and Technology, abbr: UIST, type: conference, category: hci, tier: 1, aliases: []}
+  - {name: ACM Conference on Computer-Supported Cooperative Work and Social Computing, abbr: CSCW, type: conference, category: hci, tier: 1, aliases: []}
+  - {name: International Symposium on Computer Architecture, abbr: ISCA, type: conference, category: computer_architecture, tier: 1, aliases: []}
+  - {name: IEEE/ACM International Symposium on Microarchitecture, abbr: MICRO, type: conference, category: computer_architecture, tier: 1, aliases: []}
+  - {name: IEEE International Symposium on High-Performance Computer Architecture, abbr: HPCA, type: conference, category: computer_architecture, tier: 1, aliases: []}
+  - {name: International Conference for High Performance Computing Networking Storage and Analysis, abbr: SC, type: conference, category: high_performance_computing, tier: 1, aliases: [Supercomputing]}
+  - {name: Robotics Science and Systems, abbr: RSS, type: conference, category: robotics, tier: 1, aliases: []}
+  - {name: IEEE International Conference on Robotics and Automation, abbr: ICRA, type: conference, category: robotics, tier: 2, aliases: []}
+  - {name: IEEE/RSJ International Conference on Intelligent Robots and Systems, abbr: IROS, type: conference, category: robotics, tier: 2, aliases: []}
+  - {name: Conference on Robot Learning, abbr: CoRL, type: conference, category: robotics, tier: 1, aliases: []}
+

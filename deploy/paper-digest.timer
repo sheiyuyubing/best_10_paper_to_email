@@ -1,0 +1,11 @@
+[Unit]
+Description=Wake the paper digest job every day; the program enforces a 10-day interval
+
+[Timer]
+OnCalendar=*-*-* 08:00:00 Asia/Shanghai
+Persistent=true
+RandomizedDelaySec=300
+Unit=paper-digest.service
+
+[Install]
+WantedBy=timers.target

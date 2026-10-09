@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>计算机顶刊顶会论文精选</title>
+</head>
+<body style="margin:0;padding:0;background:#f4f6f8;color:#1f2937;font-family:Arial,'Microsoft YaHei',sans-serif;">
+  <div style="max-width:860px;margin:0 auto;padding:24px;">
+    <div style="background:#0f172a;color:#ffffff;padding:24px;border-radius:12px 12px 0 0;">
+      <h1 style="margin:0;font-size:24px;">计算机顶刊顶会论文精选</h1>
+      <p style="margin:8px 0 0;color:#cbd5e1;">{{ today }}</p>
+    </div>
+    <div style="background:#ffffff;padding:24px;border-radius:0 0 12px 12px;">
+      {% for paper in papers %}
+      <article style="padding:18px 0;border-bottom:1px solid #e5e7eb;">
+        <h2 style="margin:0 0 8px;font-size:19px;line-height:1.45;">{{ loop.index }}. {{ paper.title }}</h2>
+        <p style="margin:4px 0;color:#475569;">作者：{{ paper.authors|join('、') if paper.authors else '未知' }}</p>
+        <p style="margin:4px 0;color:#475569;">来源：{{ paper.venue }} | {{ paper.publication_date.isoformat() if paper.publication_date else '未知日期' }}</p>
+        {% if paper.doi %}<p style="margin:4px 0;color:#475569;">DOI：{{ paper.doi }}</p>{% endif %}
+        <p style="margin:10px 0;color:#334155;line-height:1.65;">{{ paper.abstract|truncate(700, true) if paper.abstract else '暂无摘要' }}</p>
+        {% if paper.url %}<p style="margin:8px 0;"><a href="{{ paper.url }}" style="color:#2563eb;">阅读原文</a></p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
